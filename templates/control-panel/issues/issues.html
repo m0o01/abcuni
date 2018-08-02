@@ -1,0 +1,86 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %} <title>Issues</title> {% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 60px; text-align: left; padding-bottom: 150px;">
+      <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Contact Us Issues:</h3>
+      <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+          <thead class="thead-light">
+              <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Date</th>
+                  <th></th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for issue in issues %}
+              <tr>
+                  <td>{{ issue['id'] }}</td>
+                  <td>{{ issue['title'] }}</td>
+                  <td>{{ issue['name'] }}</td>
+                  <td>{{ issue['email'] }}</td>
+                  <td>{{ issue['date'] }}</td>
+                  <td>
+                      <form action="/control-panel/issues/{{ issue['id']}}" method="POST">
+                          <input type="submit" value="Read Message" class="btn btn-primary">
+                      </form>
+                  </td>
+                  <td>
+                    <form action="/control-panel/issues/delete" method="GET">
+                        <input type="hidden" name="id" value="{{ issue['id'] }}">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Solved Issues:</h3>
+      <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+          <thead class="thead-light">
+              <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Solved by</th>
+                  <th>Receive Date</th>
+                  <th>Solve Date</th>
+                  <th></th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for issue in solved_issues %}
+              <tr>
+                  <td>{{ issue['id'] }}</td>
+                  <td>{{ issue['title'] }}</td>
+                  <td>{{ issue['name'] }}</td>
+                  <td>{{ issue['email'] }}</td>
+                  <td>{{ issue['solved_by'] }}</td>
+                  <td>{{ issue['receive_date'] }}</td>
+                  <td>{{ issue['date'] }}</td>
+                  <td>
+                      <form action="/control-panel/issues/{{ issue['id']}}" method="POST">
+                          <input type="hidden" name="solved" value="solved">
+                          <input type="submit" value="Read Message" class="btn btn-primary">
+                      </form>
+                  </td>
+                  <td>
+                    <form action="/control-panel/issues/delete" method="GET">
+                        <input type="hidden" name="solved" value="True">
+                        <input type="hidden" name="id" value="{{ issue['id'] }}">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}

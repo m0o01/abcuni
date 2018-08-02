@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        {% block title %}{% endblock %}
+        <!-- Bootstrap core CSS -->
+        <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="/static/css/business-frontpage.css" rel="stylesheet">
+        <!-- Favicon -->
+        <link href="/static/favicon.ico" rel="shortcut icon">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <!-- Navigation -->
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" >
+            <div class="container" style="width: 1280px; padding: 0px;">
+
+                <a class="navbar-brand" href="/" id="uni" style="margin-right: 20px;">ABC University</a>
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <div class="container" style="max-width: 350px; margin-left: 70px;">
+                    {% include "includes/_flashmsg.html" %}
+                </div>
+                <ul class="navbar-nav ml-auto" style="text-align: center;">
+                    {% if session.logged_in %}
+                            <li class="nav-item" style="margin-top: 16px;">
+                                <a class="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                            {% if session.is_admin %}
+                            <li class="nav-item" style="margin-top: 16px;">
+                                <a class="nav-link" href="/control-panel">ControlPanel</a>
+                            </li>
+                            {% endif %}
+                            <li class="nav-item" style="margin-top: 16px;">
+                                <a class="nav-link" href="/articles">Articles</a>
+                            </li>
+                            <li class="nav-item" style="margin-top: 16px;">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                            <li class="nav-item" style="margin-top: 16px;">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                        <li>
+                            <div class="card" style="width: 190px; height: 70px; background-color: #52535c; border:#66666b solid 1px;">
+                                    <table style="width: 190px; padding: 0px;">
+                                    <tr>
+                                        {% if "employee" in session.user_type %}
+                                        <td>
+                                                {% if data['photo_path'] %}
+                                                <img src="{{ data['photo_path'] }}" class="profile_photo" alt="employee" width="60px" height="60px" style="margin-bottom: 12px;">
+                                                {% else %}
+                                                <img src="/static/img/employee.svg" alt="employee" width="60px" height="60px" style="margin-bottom: 12px;">
+                                                {% endif  %}
+                                        <td>
+                                        <p style="color: white; font-size: 13px; padding-top: 12px; text-align: center; font-weight: bold;">{{ data['firstname'] }} {{ data['lastname'] }}<br/>{{ data['job'] }}</p>
+                                        </td>
+                                        {% else %}
+                                        <td>
+                                                {% if data['photo_path'] %}
+                                                <img src="{{ data['photo_path'] }}" class="profile_photo" alt="student" width="60px" height="60px" style="margin-bottom: 12px;">
+                                                {% else %}
+                                                <img src="/static/img/student.svg" alt="student" width="60px" height="60px" style="margin-bottom: 12px;">
+                                                {% endif  %}
+                                        <td>
+                                        <p style="color: white; font-size: 13px; padding-top: 5px; text-align: center; font-weight: bold;">{{ data['firstname'] }} {{ data['lastname'] }}<br/>{{ data['faculty'] }}<br/>{{ data['department'] }}</p>
+                                        </td>
+                                        {% endif %}
+                                    </tr>
+                                    </table>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/articles">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li>
+                    {% endif %}
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+              {% block body %}
+              {% endblock %}
+              
+          <!-- Footer -->
+          <footer class="py-5 bg-dark" style="background-color: #0f1225;">
+            <div class="container">
+              <p class="m-0 text-center text-white">Copyright &copy; ABC University 2018</p>
+            </div>
+            <!-- /.container -->
+          </footer>
+
+          <!-- Bootstrap core JavaScript -->
+          <script src="/static/vendor/jquery/jquery.min.js"></script>
+          <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+          <!-- CKEDITOR -->
+          <script src="/static/ckeditor/ckeditor.js"></script>
+
+            <script type="text/javascript">
+                CKEDITOR.replace('editor');
+            </script>
+          
+    </body>
+</html>

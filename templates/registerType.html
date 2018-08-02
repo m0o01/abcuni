@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/css/register_type.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="signup-page">
+            {% include "includes/_flashmsg.html" %}
+            <div class="form">
+            <h1 style="text-align: center; font-family: 'Oswald';">Choose Your Account Type</h1>
+            <table style="margin-top: 30px;">
+                    <tr>
+                        <th style="padding-left: 25px;">
+                        <a href="/register/student">
+                            <img src="/static/img/student.svg" width="150px" height="150px">
+                            <br/>
+                            STUDENT
+                        </a>
+                        </th>
+                        <th style="padding-left: 25px;">
+                        <a href="/register/professor">
+                                <img src="/static/img/teacher.svg" width="150px" height="150px">
+                                <br/>
+                                PROFESSOR
+                        </a>
+                        </th>
+                        <th style="padding-left: 25px;">
+                        <a href="/register/employee">
+                                <img src="/static/img/employee.svg" width="150px" height="150px">
+                                <br/>
+                                EMPLOYEE
+                        </a>
+                        </th>
+                    </tr>
+            </table>
+            </div>
+        </div>
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+          <!-- Footer -->
+          <footer class="py-5 bg-blue">
+                <div class="container">
+                  <p class="m-0 text-center text-white">Copyright &copy; ABC University 2018</p>
+                </div>
+                <!-- /.container -->
+          </footer>
+    </body>
+</html>

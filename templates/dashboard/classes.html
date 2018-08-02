@@ -1,0 +1,98 @@
+{% extends "dashboard/dashboard.html" %}
+{% block title %}
+    <title>Classes</title>
+{% endblock %}
+{% block body %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 30px; text-align: left;">
+    <h1 style="font-family:'Oswald', sans-serif ; text-align: center;">Student Classes</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Class Name</th>
+            <th scope="col">Code</th>
+            <th scope="col">Teacher</th>
+            <th scope="col">Lectures</th>
+            <th scope="col">Days</th>
+            <th scope="col">Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Web Development</th>
+            <td>WEB101</td>
+            <td>Null</td>
+            <td>12</td>
+            <td>SUN,WED</td>
+            <td>7:00AM - 9:00AM</td>
+          </tr>
+          <tr>
+            <th scope="row">Algorithms</th>
+            <td>CS101</td>
+            <td>Null</td>
+            <td>9</td>
+            <td>SUN~TUE</td>
+            <td>10:00AM - 12:00PM</td>
+          </tr>
+          <tr>
+            <th scope="row">Discrete Mathimatcs</th>
+            <td>CS100</td>
+            <td>Null</td>
+            <td>12</td>
+            <td>SUN~THU</td>
+            <td>1:00PM - 3:00PM</td>
+          </tr>
+        </tbody>
+      </table>
+    <h1 style="font-family:'Oswald', sans-serif ; text-align: center;">Week Schedule</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Days/Hours</th>
+            <th scope="col">7:00AM - 9:00AM</th>
+            <th scope="col">10:00AM - 12:00PM</th>
+            <th scope="col">1:00PM - 3:00PM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Saturday</th>
+            <td>-</td>
+            <td>Algorithms</td>
+            <td>Discrete Mathimatcs</td>
+          </tr>
+          <tr>
+            <th scope="row">Sunday</th>
+            <td>Web Development</td>
+            <td>Algorithms</td>
+            <td>Discrete Mathimatcs</td>
+          </tr>
+          <tr>
+            <th scope="row">Monday</th>
+            <td>-</td>
+            <td>Algorithms</td>
+            <td>Discrete Mathimatcs</td>
+          </tr>
+          <tr>
+            <th scope="row">Tuesday</th>
+            <td>-</td>
+            <td>Algorithms</td>
+            <td>Discrete Mathimatcs</td>
+          </tr>
+          <tr>
+            <th scope="row">Wedneday</th>
+            <td>Web Development</td>
+            <td>-</td>
+            <td>Discrete Mathimatcs</td>
+          </tr>
+          <tr>
+            <th scope="row">Thursday</th>
+            <td>-</td>
+            <td>-</td>
+            <td>Discrete Mathimatcs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>    
+</div>
+{% endblock %}

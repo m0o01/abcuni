@@ -1,0 +1,24 @@
+@font-face {
+    font-family: Oswald;
+    src: url('/static/fonts/Oswald-Regular.ttf'); 
+  }
+fieldset{
+    position: relative;
+    width: 900px;
+    height: 200px;
+    top: 60px;
+    left: 200px;
+    text-align: center;
+}
+legend{
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    right: 120px;
+}
+#content{
+    height: 680px;
+}  
+button{
+    position: relative;
+    right: 500px;
+}

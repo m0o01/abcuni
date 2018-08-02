@@ -1,0 +1,62 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %} <title>Edit Student Info</title> {% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 60px; text-align: left; padding-bottom: 150px;">
+      <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Update Student Data:</h3>
+      <form action="" method="POST" style="margin:20px;">
+          <table style="margin:10px;">
+              <tr>
+                  <td>
+                  <input type="text" name="firstname" value="{{ student['firstname'] }}" placeholder="First Name" class="form-control" required>
+                  </td>
+                  <td>
+                  <input type="text" name="lastname" value="{{ student['lastname'] }}" placeholder="Last Name" class="form-control" required>
+                  </td>
+              </tr>
+           </table>
+                <div style="width: 450px; margin:10px;">
+                    {% if student_gender == 'Male' %}
+                    <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="gender" value="Male" class="custom-control-input" required checked>
+                            <label class="custom-control-label" for="customRadioInline1">Male</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="gender" value="Female" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline2">Female</label>
+                    </div>
+                    {% else %}
+                    <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="gender" value="Male" class="custom-control-input" required>
+                            <label class="custom-control-label" for="customRadioInline1">Male</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="gender" value="Female" class="custom-control-input" checked>
+                            <label class="custom-control-label" for="customRadioInline2">Female</label>
+                    </div>
+                    {% endif %}
+                </div>
+                    <select required class="custom-select" name="faculty" style="width: 450px; margin:10px;">
+                            {% for faculty in faculties %}
+                                {% if faculty == student_faculty %}
+                                    <option value="{{faculty}}">{{ faculty }}</option>
+                                    {{ faculties.remove(faculty) }}
+                                    <option value="{{faculties[0]}}">{{faculties[0]}}</option>
+                                    <option value="{{faculties[1]}}">{{faculties[1]}}</option>
+                                {% endif %}
+                            {% endfor %}
+                    </select>
+                     <input type="text" name="department" style="width: 450px; margin:10px;" value="{{ student['department'] }}" class="form-control col-xs-4" placeholder="Department" required>
+                    
+                    <input type="text" name="year" style="width: 450px; margin:10px;" value="{{ student['year'] }}" class="form-control" placeholder="Year" required>
+                    
+                    <input type="text" name="semester" style="width: 450px; margin:10px;" value="{{ student['semester'] }}" class="form-control" placeholder="Semseter" required>
+
+                    <input type="text" name="contact_info" style="width: 450px; margin:10px;" value="{{ student['contact_info'] }}" class="form-control" placeholder="Contact Info" required>
+
+          <button class="btn btn-primary" style="width:120px; margin-left: 10px;" >Edit</button>
+      </form>
+      </div>
+    </div>
+</div>
+{% endblock %}

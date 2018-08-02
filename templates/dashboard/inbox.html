@@ -1,0 +1,79 @@
+{% extends "dashboard/dashboard.html" %}
+{% block title %} <title>Inbox</title> {% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    form{
+        display: inline;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 40px; text-align: left; padding-bottom: 150px;">
+      <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Received Messages:</h3>
+      <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+          <thead class="thead-light">
+              <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Sender</th>
+                  <th>Role</th>
+                  <th>Date</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for message in received %}
+              <tr>
+                  {% if message['read_status'] %}
+                    <td style="width:100px;">Old</td>
+                  {% else  %}
+                    <td style="color:green; width:100px;">Unread</td>
+                  {% endif %}
+                  <td>{{ message['title'] }}</td>
+                  <td><a href="/profile/{{ message['sender_id'] }}">{{ message['firstname'] + " " + message['lastname'] }}</a></td>
+                  <td>{{ message['role'] }}</td>
+                  <td>{{ message['date'] }}</td>
+                  <td>
+                      <form action="/dashboard/indox/message/{{ message['id'] }}" method="POST">
+                          <input type="hidden" name="read_status" value="True">
+                          <input type="hidden" name="received" value="received">
+                          <input type="submit" value="Read Message" class="btn btn-primary">
+                      </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Sent Messages:</h3>
+      <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+          <thead class="thead-light">
+              <tr>
+                  <th>Title</th>
+                  <th>Recipient</th>
+                  <th>Role</th>
+                  <th>Date</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for message in sent %}
+              <tr>
+                  <td>{{ message['title'] }}</td>
+                  <td><a href="/profile/{{ message['recipient_id'] }}">{{ message['firstname'] + " " + message['lastname'] }}</a></td>
+                  <td>{{ message['role'] }}</td>
+                  <td>{{ message['date'] }}</td>
+                  <td>
+                      <form action="/dashboard/indox/message/{{ message['id'] }}" method="POST">
+                          <input type="hidden" name="sent" value="sent">
+                          <input type="submit" value="Read Message" class="btn btn-primary">
+                      </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    </div>
+</div>
+{% endblock %}

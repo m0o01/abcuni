@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}<title>Control Panel</title>{% endblock %}
+{% block head %}
+<!--Control Panel CSS-->
+<link href="/static/css/control-panel.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 sidebar1">
+                <br>
+                <div class="left-navigation" style="padding-top: 20px;">
+                      <ul class="list">
+                          <h5 style="font-family:'Oswald', sans-serif;"><strong>Manage Users</strong></h5>
+                          <li><a href="/control-panel/students" style="color: white; text-decoration: none;">Students</a></li>
+                          <li><a href="/control-panel/teachers" style="color: white; text-decoration: none;">Teachers</a></li>
+                          <li><a href="/control-panel/employees" style="color: white; text-decoration: none;">Employees</a></li>
+                      </ul>
+                      <br>
+                      <ul class="list">
+                          <h5 style="font-family:'Oswald', sans-serif;"><strong>News and Articles</strong></h5>
+                          <li><a href="/control-panel/new-article" style="color: white; text-decoration: none;">New Article</a></li>
+                          <li><a href="/control-panel/articles" style="color: white; text-decoration: none;">View Articles</a></li>
+                      </ul>
+                      <ul class="list">
+                        <h5 style="font-family:'Oswald', sans-serif;"><strong>Visitors and Users</strong></h5>
+                            <li><a href="/control-panel/issues" style="color: white; text-decoration: none;">Issues</a>
+                                {% if issues %}
+                                    <a class="badge1" data-badge="{{ issues|length }}"></a>
+                                {% endif %}
+                            </li>
+                      </ul>
+                </div>
+            </div>
+            {% block contents %}
+            <div class="col-md-10 col-sm-8 main-content">
+              <div style="margin-top: 150px; text-align: left; padding-bottom: 150px;">
+                <h1 style="font-family:'Oswald', sans-serif; text-align: center; font-size: 56px;">Control Panel</h1>
+                <h2 style="font-family:'Oswald', sans-serif; margin-left: 320px;">Use the left side bar to mange the website.</h2></div>
+              </div>
+            </div>
+            {% endblock %}
+          </div>
+      </div>
+
+{% endblock %}

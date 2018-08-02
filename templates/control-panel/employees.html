@@ -1,0 +1,91 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %} <title>Employees</title> {% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    form{
+        display: inline;
+    }
+</style>
+{% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+      <div style="margin-top: 60px; text-align: left; padding-bottom: 150px;">
+        <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Regestried Employees:</h3>
+        <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Staff ID</th>
+                    <th>Employee Email</th>
+                    <th>Registration Date</th>
+                    <th>
+                        <form action="/control-panel/public_message" method="GET">
+                            <input type="hidden" name="public_message_recipients" value="employees">
+                            <button class="btn btn-primary" style="width: 180px;">Send Public Message</button>
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in reg_employees %}
+                <tr>
+                    <td>{{ employee['id'] }}</td>
+                    <td>{{ employee['staff_id'] }}</td>
+                    <td>{{ employee['email'] }}</td>
+                    <td>{{ employee['reg_date'] }}</td>
+                    <td>
+                        <form action="/control-panel/employees/delete" method="GET">
+                            <input type="hidden" name="id" value="{{ employee['staff_id'] }}">
+                            <input type="hidden" name="reg" value="true">
+                            <button class="btn btn-danger" href="/control-panel/employees/delete"  style="width:70px;">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Employees in the Database:</h3>
+        <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Staff ID</th>
+                    <th>Gender</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Job</th>
+                    <th colspan="2">
+                        <form action="/control-panel/employees/add-employee" method="GET">
+                            <button class="btn btn-primary" style="width: 170px;">Add New Employee</button>
+                        </form>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees_db %}
+                <tr>
+                    <td> {{ employee['id'] }} </td>
+                    <td> {{ employee['staff_id'] }} </td>
+                    <td> {{ employee['gender'] }} </td>
+                    <td> {{ employee['firstname'] }} </td>
+                    <td> {{ employee['lastname'] }} </td>
+                    <td> {{ employee['job'] }} </td>
+                    <td>
+                        <form action="/control-panel/employees/edit" method="GET">
+                            <input type="hidden" name="id" value="{{ employee['staff_id'] }}">
+                            <button class="btn btn-secondary" href="/control-panel/employees/edit"  style="width:70px;">Edit</button>
+                        </form>
+                        <form action="/control-panel/employees/delete" method="GET">
+                            <input type="hidden" name="reg" value="false">
+                            <input type="hidden" name="id" value="{{ employee['staff_id'] }}">
+                            <button class="btn btn-danger" href="/control-panel/employees/delete"  style="width:70px;">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+</div>
+{% endblock %}

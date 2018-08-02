@@ -1,0 +1,45 @@
+{% extends "dashboard/dashboard.html" %}
+{% block title %} <title>Message: {{ message['title'] }}</title> {% endblock %}
+{% block body %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 40px; text-align: left; padding-bottom: 150px;">
+        <fieldset class="form-group">
+            <legend  style="font-family:'Oswald', sans-serif; text-align: center;">Read Message</legend>
+            <p><b>Title: </b> {{ message['title'] }}.</p>
+            {% if received %}
+                <p><b>Sender: </b> {{ message['firstname'] + " " + message['lastname'] }}.</p>
+                <p><b>Role: </b> {% if message['job'] %}Employee{% else %}Student{% endif %} </p>
+                {% if message['role'] == 'Student' %}
+                <p><b>Student ID: </b> {{ message['user_id'] }} </p>
+                {% else %}
+                <p><b>Staff ID: </b> {{ message['user_id'] }} </p>
+                {% endif %}
+                <p><b>Date:</b> {{ message['date'] }}</p>
+                <hr/>
+            {% else %}
+                <p><b>Recipient: </b> {{ message['firstname'] + " " + message['lastname'] }}.</p>
+                <p><b>Role: </b> {% if message['job'] %}Employee{% else %}Student{% endif %}.</p>
+                {% if message['role'] == 'Student' %}
+                <p><b>Student ID: </b> {{ message['user_id'] }} </p>
+                {% else %}
+                <p><b>Staff ID: </b> {{ message['user_id'] }} </p>
+                {% endif %}
+                <p><b>Date:</b> {{ message['date'] }}</p>
+                <hr/>
+            {% endif %}
+            <b>Message:</b>
+                <div style="padding: 10px; margin:10px; background-color:gainsboro; border-radius: 5px;">
+                {{ message['message'] | safe }}
+                </div>
+            {% if received %}
+            <div style="width: 200px; position:relative; left:41%;">
+                <form action="/dashboard/inbox/replay/{{ message['id'] }}">
+                    <button class="btn btn-primary">Replay to Message</button>
+                </form>
+            </div>
+            {% endif %}
+      </fieldset>
+      </div>
+    </div>
+</div>
+{% endblock %}

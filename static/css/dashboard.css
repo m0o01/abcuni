@@ -1,0 +1,108 @@
+@font-face {
+  font-family: Oswald;
+  src: url('/static/fonts/Oswald-Regular.ttf'); 
+}
+.nav-link{
+    font-size: 1rem;
+}
+#uni{
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+}
+.sidebar1 {
+  background:#353A3E;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#353A3E,rgb(55, 59, 63),rgb(109, 115, 121));
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#353A3E,rgb(55, 59, 63),rgb(109, 115, 121));
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#353A3E,rgb(55, 59, 63),rgb(109, 115, 121));
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#353A3E,rgb(55, 59, 63),rgb(109, 115, 121));
+  /* Standard syntax */
+  padding: 0px;
+  min-height: 100%;
+}
+.logo {
+  max-height: 130px;
+}
+.logo>img {
+  margin-top: 30px;
+  padding: 3px;
+  border: 3px solid white;
+  border-radius: 100%;
+}
+.list {
+  color: #fff;
+  list-style: none;
+  padding-left: 0px;
+}
+.list::first-line {
+  color: rgba(255, 255, 255, 0.5);
+}
+.list> li, h5 {
+  padding: 5px 0px 5px 40px;
+}
+.list>li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 5px solid white;
+  color: white;
+  font-weight: bolder;
+  padding-left: 35px;
+}
+.main-content{
+  text-align:center;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+.title {
+  color: grey;
+  font-size: 18px;
+}
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+}
+button:hover, a:hover {
+  opacity: 0.7;
+}
+.profile_photo{
+  border-radius: 50%;
+}
+.badge1 {
+  position:relative;
+}
+.badge1[data-badge]:after {
+  content:attr(data-badge);
+  position:absolute;
+  top:-10px;
+  right:-18px;
+  font-size:.7em;
+  background:rgb(223, 57, 57);
+  color:white;
+  width:18px;height:18px;
+  text-align:center;
+  line-height:18px;
+  border-radius:50%;
+  box-shadow:0 0 1px #333;
+}
+td, thead, th, tbody{
+  text-align: center;
+}

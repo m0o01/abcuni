@@ -1,0 +1,25 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %}<title>Delete Student</title>{% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+        <form action="" method="POST">
+                <div style="margin-top: 60px; text-align: left; padding-bottom: 150px;">
+                  <h1 style="font-family:'Oswald', sans-serif; text-align: center; font-size: 44px; color: rgb(167, 31, 31);">DELETE ISSUE</h1>
+                    <p><b>Title:</b> {{ issue['title'] }}</p>
+                    <p><b>Name:</b> {{ issue['name'] }}</p>
+                    <p><b>Email:</b> {{ issue['email'] }}</p>
+                    <p><b>Date:</b> {{ issue['date'] }}</p>
+                    <hr/>
+                    <b>Message:</b>
+                    <div style="padding: 10px; margin:10px; background-color:gainsboro; border-radius: 5px;">{{ issue['message'] }}</div>
+                    {% if solve %}
+                      <h2 style="font-family:'Oswald', sans-serif; text-align:center; font-size:26px;">Are You Sure You want to delete this issue?</h2>
+                      {% else %}
+                      <h2 style="font-family:'Oswald', sans-serif; text-align:center; font-size:26px;">Are You Sure You want to delete this issue without replaying?</h2>
+                    {% endif %}
+                  <input type="submit" class="btn btn-danger" value="Delete Issue" style="margin-left:460px;">
+                  <input type="submit" name="back" value="Back" class="btn btn-primary">
+                  </div>
+        </form>
+</div>
+{% endblock %}

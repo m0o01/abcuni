@@ -1,0 +1,27 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %}<title>Delete Employee</title>{% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+        {% if reg %}
+        <form action="" method="POST">
+                <div style="margin-top: 150px; text-align: left; padding-bottom: 150px;">
+                  <h1 style="font-family:'Oswald', sans-serif; text-align: center; font-size: 44px; color: rgb(167, 31, 31);">DELETE EMPLOYEE ACCOUNT</h1>
+                  <h2 style="font-family:'Oswald', sans-serif; margin-left: 150px; font-size:26px;">Are You Sure You want to delete the employee with ID Number: {{ employee['staff_id'] }} from the website?</h2>
+                  <input type="submit" class="btn btn-danger" value="Delete Employee" style="margin-left:480px;">
+                  <p style="margin-left: 450px; font-size: 14px;">You can't undo this deletion.</p>
+                  </div>
+        </form>
+        {% else %}
+        <form action="" method="POST">
+          <div style="margin-top: 150px; text-align: left; padding-bottom: 150px;">
+            <h1 style="font-family:'Oswald', sans-serif; text-align: center; font-size: 44px; color: rgb(167, 31, 31);">DELETE EMPLOYEE FROM DATABASE</h1>
+            <h2 style="font-family:'Oswald', sans-serif; margin-left: 140px; font-size:26px;">Are You Sure You want to delete the employee with ID Number: {{ employee['staff_id'] }} from the Database?</h2>
+            <h2 style="font-family:'Oswald', sans-serif; margin-left: 320px; font-size:26px; text-decoration: underline;">This will also delete their website account.</h2>
+            <input type="submit" class="btn btn-danger" value="Delete Employee" style="margin-left:420px;">
+            <input type="submit" name="back" value="Back" class="btn btn-primary">
+            <p style="margin-left: 450px; font-size: 14px;">You can't undo this deletion.</p>
+            </div>
+        </form>
+        {% endif %}
+</div>
+{% endblock %}

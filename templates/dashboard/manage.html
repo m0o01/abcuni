@@ -1,0 +1,52 @@
+{% extends "dashboard/dashboard.html" %}
+{% block title %}
+    <title>Manage Account</title>
+{% endblock %}
+{% block body %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div class="container" style="margin-top: 30px; text-align: left; padding-bottom: 150px;">
+        <h3 style="font-family:'Oswald', sans-serif ; margin-bottom: 10px;">Manage Profile: <a href="/profile/{{ session['user_id'] }}" target="_blank"><button class="btn btn-info" style="width: 120px; margin-bottom: 20px;">Visit Profile</button></a>
+        </h3>
+        <h4 style="font-family:'Oswald', sans-serif ; margin-bottom: 10px;">Bio</h4>
+        <form action="" method="POST">
+            <input type="hidden" name="change_bio">
+            <textarea class="form-control" name="bio" rows='3' placeholder="Write something About yourself..." maxlength="280"></textarea>
+            <input type="submit" value="Update" class="btn btn-primary" style="margin-top: 10px;">
+        </form>
+        <hr/>
+        <h4 style="font-family:'Oswald', sans-serif ; margin-bottom: 20px;">Change Profile-Photo</h4>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="custom-file" style="margin-bottom: 10px;">
+                <input type="hidden" name="profile_photo_update">
+                <input type="file" name="file">
+            </div>
+            <p>Photo must be in one of the formats: (.jpg, .png, .jpeg, .gif).</p>
+            <input type='submit' value='Upload' class="btn btn-primary">
+            {% if data['photo_path'] %}
+                <input type='submit' name="delete_photo" value='Remove Current Photo' class='btn btn-warning'>
+            {% endif %}
+        </form>
+
+        <hr>
+        <h3 style="font-family:'Oswald', sans-serif ; margin-bottom: 20px;">Change Account Password:</h3>
+        <table>
+            <form action="" method="POST">
+            <tr>
+                <input type="password" name="old_password" placeholder="Old Password" style="width: 340px; margin-right: 10px;"/>
+            </tr>
+            <tr></tr>
+            <tr>
+                <input type="password" name="new_password" placeholder="New Password" style="width: 340px; margin-right: 10px;"/>
+            </tr>
+            <tr></tr>
+            <tr>
+                <input type="password" name="confirm_password" placeholder=" Confirm New Password" style="width: 340px; margin-right: 10px;"/>
+            </tr>
+            <div>
+                <input type="submit", value="Change Password" class="btn btn-primary" style="margin-top: 10px;"/>
+            </div>
+            </form>
+        </table>
+    </div>
+</div>
+{% endblock %}

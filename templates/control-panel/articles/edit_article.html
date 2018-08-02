@@ -1,0 +1,33 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %}<title>Edit Article</title>{% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 60px; text-align: left; padding-bottom: 150px;">
+      <h3 style="font-family:'Oswald', sans-serif; text-align: center;">Edit Article</h3>
+      <form action="" method="POST" enctype="multipart/form-data">
+        <div class="form-field">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="{{ article['title'] }}" id ="title" maxlength="100" placeholder="Article Title" class="form-control" required>
+        </div>
+        <div class="form-field">
+            <label for="description">Description:</label>
+            <input type="text" name="description" value="{{ article['description'] }}" id ="description" maxlength="280" placeholder="Description About The Article" class="form-control" required>
+        </div>
+        <div class="form-field">
+        <label for="file">Cover Photo (Optional):</label>
+        <input id="file" type="file" name="cover">
+        {% if article_cover %}
+        <p style="color:rgb(44, 130, 211);">Note: Article is already has a cover photo <a href="{{ article['cover_path'] }}" style="color:rgb(44, 130, 211);">preview here.</a></p>
+        {% endif %}
+        </div>
+        <div class="form-field">
+        <label for="editor">Article Contents:</label>
+        <div>
+        <textarea id="editor" name="article" placeholder="Article here" rows="9" class="form-control" required>{{ article['article'] }}</textarea>
+        </div>
+        </div>
+        <input type="submit" value="Update Article" class="btn btn-primary" style="margin-left: 20px;">
+      </form>
+    </div>
+</div>
+{% endblock %}

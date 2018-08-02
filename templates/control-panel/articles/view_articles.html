@@ -1,0 +1,87 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %} <title>Articles</title> {% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    form{
+        display: inline;
+    }
+</style>
+{% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 60px; text-align: left; padding-bottom: 150px;">
+<h3 style="font-family:'Oswald', sans-serif; text-align: left;">Articles at Index Page:</h3>
+      <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+          <thead class="thead-light">
+              <tr>
+                  <th>#</th>
+                  <th>Article Title</th>
+                  <th>Author</th>
+                  <th>Role</th>
+                  <th>Date</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for article in index_articles %}
+              <tr>
+                  <td>{{ article['id'] }}</td>
+                  <td>{{ article['title'] }}</td>
+                  <td>{{ article['author'] }}</td>
+                  <td>{{ article['role'] }}</td>
+                  <td>{{ article['date'] }}</td>
+                  <td>
+                    <form action="" method="POST">
+                        <input type="hidden" name="remove" value="remove">
+                        <input type="hidden" name="id" value="{{ article['id'] }}">
+                        <input type="submit" value="Remove From Index" class="btn btn-primary">
+                    </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      <h3 style="font-family:'Oswald', sans-serif; text-align: left;">Articles:</h3>
+      <table class="table" style="margin-bottom: 40px; margin-top:20px;">
+          <thead class="thead-light">
+              <tr>
+                  <th>#</th>
+                  <th>Article Title</th>
+                  <th>Author</th>
+                  <th>Role</th>
+                  <th>Date</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for article in articles %}
+              <tr>
+                  <td>{{ article['id'] }}</td>
+                  <td><a href="/articles/{{ article['id'] }}" target="_blank">{{ article['title'] }}</a></td>
+                  <td>{{ article['author'] }}</td>
+                  <td>{{ article['role'] }}</td>
+                  <td>{{ article['date'] }}</td>
+                  <td>
+                            <form action="/control-panel/articles/edit" method="GET">
+                                <input type="hidden" name="id" value="{{ article['id'] }}">
+                                <input type="submit" value="Edit" class="btn btn-primary">
+                            </form>
+                            <form action="" method="POST">
+                                    <input type="hidden" name="add" value="add">
+                                    <input type="hidden" name="id" value="{{ article['id'] }}">
+                                    <input type="submit" value="Add to Index" class="btn btn-primary">
+                            </form>
+                            <form action="/control-panel/articles/delete" method="GET">
+                                <input type="hidden" name="id" value="{{ article['id'] }}">
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
+                       
+                 </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "control-panel/control-panel.html" %}
+{% block title %} <title>Issue: {{ issue['title'] }}</title> {% endblock %}
+{% block contents %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 60px; text-align: left; padding-bottom: 150px;">
+        <fieldset class="form-group">
+            <legend  style="font-family:'Oswald', sans-serif; text-align: center;">Message Replay</legend>
+            <form action="/control-panel/issues/replay/{{ issue['id'] }}", method="POST">
+                <!-- Title input-->
+                <div class="form-group">
+                        <div class="col-md-9">
+                            Title: <input name="title" type="text" placeholder="Message Title" maxlength="100" value="ABC-UNI issue: {{issue['title']}}" class="form-control" required>
+                        </div>
+                </div>
+                <!-- Message body -->
+                <div class="form-group">
+                        <div class="col-md-9">
+                            Message: <textarea class="form-control" id="editor" name="message" rows="7" required>
+Title: {{ issue['title'] }} 
+Name: {{ issue['name'] }} 
+Message: {{ issue['message'] }}
+--------------------------------------------</textarea>
+                        </div>
+                </div>
+                <div style="width: 200px; margin-left: 20px;">
+                        <form action="/control-panel/issues/replay/{{ issue['id'] }}">
+                            <button class="btn btn-primary">Replay to Message</button>
+                        </form>
+                </div>
+            </form>
+        </fieldset>
+      </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block title %}
+    <title>Contact Us</title>
+{% endblock %}
+{% block head %}
+  <link href="/static/css/contact.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="container" id="content">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="well well-sm">
+              <form class="form-horizontal" action="" method="post">
+              <fieldset>
+                <legend>Contact us</legend>
+        
+                <!-- Title input-->
+                <div class="form-group">
+                        <div class="col-md-9">
+                          <input id="name" name="title" type="text" placeholder="Title" maxlength="100" class="form-control" required>
+                        </div>
+                </div>
+
+                <!-- Name input-->
+                <div class="form-group">
+                  <div class="col-md-9">
+                    <input id="name" name="name" type="text" placeholder="Your Name" maxlength="100" class="form-control" required>
+                  </div>
+                </div>
+
+                <!-- Email input-->
+                <div class="form-group">
+                  <div class="col-md-9">
+                    <input id="email" name="email" type="text" placeholder="Your Email Address" maxlength="100" class="form-control" required>
+                  </div>
+                </div>
+        
+                <!-- Message body -->
+                <div class="form-group">
+                  <div class="col-md-9">
+                    <textarea class="form-control" id="editor" name="message" placeholder="Please enter your message here..." rows="5" required></textarea>
+                  </div>
+                </div>
+        
+                <!-- Form actions -->
+                <div class="form-group" style="position: relative; right: 120px;">
+                    <input type="submit" value="Send Issue" class="btn btn-primary" id="submit">
+                </div>
+              </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

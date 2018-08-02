@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block title %}<title>Send Message</title>{% endblock %}
+{% block head %}
+<!--Control Panel CSS-->
+<link href="/static/css/control-panel.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 sidebar1">
+                <br>
+                <div class="left-navigation" style="padding-top: 20px;">
+                        <div style="background-color: #52535c; border-radius: 5px; padding: 4px;">
+                                <ul class="list-unstyled">
+                                <li style="margin-top: 12px; margin-left:65px;">
+                                {% if user_data['photo_path'] %}
+                                <img src="{{ user_data['photo_path'] }}" class="profile_photo" alt="" width="90" height="90">
+                                {% else %}
+                                        {% if user_data['role'] == 'Student' %}
+                                            <img src="/static/img/student.svg" alt="student" width="90" height="90">
+                                        {% else %}
+                                            <img src="/static/img/employee.svg" alt="student" width="90" height="90">
+                                        {% endif %}
+                                {% endif  %}
+                                </li>
+                                <li><p class="profile_data">{{ user_data['firstname'] + " " + user_data['lastname'] }}<br/>
+                                    {{ user_data['role'] }}</br>
+                                    {% if user_data['role'] == 'Student' %}
+                                        {{ user_data['facultyAndDepartment'] }}
+                                    {% else %}
+                                        {{ user_data['job'] }}
+                                    {% endif %}</p></li>
+                            </ul>
+                        </div>
+                        {% if user_data['BIO'] %}
+                        <div>
+                            <p style="padding-top: 5px;
+                            color: white;
+                            font-size: 24px;
+                            font-family: 'Oswald';
+                            text-align: center;">Bio</p>
+                            <blockquote>
+                                <p>{{ user_data['BIO'] }}</p>
+                            </blockquote>
+                        </div>
+                        {% endif %}
+                          <ul class="list" style="margin-top:20px;">
+                                        {% if user_data['user_id']|int != session['user_id']|int %}
+                                            <li><a href="/profile/message/{{ user_data['user_id'] }}" style="color: white; text-decoration: none;"><b>Send Private Message</b></a></li>
+                                        {% endif %}
+                          </ul>
+                    </div>
+            </div>
+            {% block contents %}
+            <div class="col-md-10 col-sm-8 main-content">
+              <div style="margin-top: 70px; text-align: left; padding-bottom: 150px;">
+                            <h3 style="font-family:'Oswald', sans-serif; text-align: center;">Send Message</h3>
+                            <form action="" method="POST">
+                                <div class="form-field">
+                                <label for="title">Title:</label>
+                                <input type="text" name="title" id ="title" maxlength="100" placeholder="Message Title" class="form-control" required>
+                                </div>
+                                <div class="form-field">
+                                <label for="editor">Message:</label>
+                                <div>
+                                <textarea id="editor" name="message" placeholder="Message here" rows="9" class="form-control" required></textarea>
+                                </div>
+                                </div>
+                                <input type="submit" value="Send Message" class="btn btn-primary" style="margin-left: 20px;">
+                            </form>
+              </div>
+            </div>
+            {% endblock %}
+          </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "dashboard/dashboard.html" %}
+{% block title %}
+    <title>Duties</title>
+{% endblock %}
+{% block body %}
+<div class="col-md-10 col-sm-8 main-content">
+    <div style="margin-top: 30px; text-align: left;">
+    {% if session['user_type'] == 'student' %}
+    <h1 style="font-family:'Oswald', sans-serif ; text-align: center;">Student Duties</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Class Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Details</th>
+            <th scope="col">Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Web Development</th>
+            <td>Project</td>
+            <td>Null</td>
+            <td>Thursday</td>
+          </tr>
+          <tr>
+            <th scope="row">Algorithms</th>
+            <td>HW</td>
+            <td>Null</td>
+            <td>Wednesday</td>
+          </tr>
+          <tr>
+            <th scope="row">Discrete Mathimatcs</th>
+            <td>HW</td>
+            <td>Null</td>
+            <td>Saturday</td>
+          </tr>
+        </tbody>
+      </table>
+      {% else %}
+      <h1 style="font-family:'Oswald', sans-serif ; text-align: center;">Employee Tasks</h1>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Type</th>
+            <th scope="col">Details</th>
+            <th scope="col">Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">-</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <th scope="row">-</th>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+</div>
+{% endblock %}
